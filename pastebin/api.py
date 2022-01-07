@@ -1,8 +1,14 @@
 import json
 import requests
-from .env import api_key
 from .pastebin_exceptions import *
 from urllib.parse import urlparse
+
+try:
+    from .env import api_key
+except ModuleNotFoundError:
+    import os
+
+    api_key = os.environ.get('api_key')
 
 
 class API:
